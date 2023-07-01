@@ -1,19 +1,14 @@
 # ELK Demo
 Для выполнения требуется наличие Mac/Linux с установленным Docker.
 
-## Что нужно сделать
-1. Написать конфигурацию Logstash для загрузки данных в ElasticSearch.
-1. Построить отчет в Kibana на основе этих данных.
+## Что сделано
+1. добавлена конфигурация logstash/clickstream.conf для разбора лога logstash/weblog.csv
 
 ## Инструкция
-1. Склонируйте репозиторий в директорию `elk_demo`
-1. Зайдите в эту директорию и разверните инфраструктуру, выполнив в терминале `docker-compose up`
-1. Отредактируйте файл `clickstream.conf`
-1. Загрузите данные веб-логов, выполнив команду `./load_data.sh`
-1. Перейдите по адресу http://localhost:5601 и создайте отчет (dashboard), показывающий распределение запросов с разными кодами ответов (status_code) по времени
+1. Инфраструктура поднимается командой docker compose up -d. Запускаются контейнеры elasticsearch и    kibana
+2. Загрузите данные веб-логов, выполнив команду `./load_data.sh`
+3. Можно перейти по адресу http://localhost:5601 и создать dashboard, показывающий распределение запросов с разными кодами ответов (status) по времени
 
-## Подсказки
-- Пример конфигурации можно подсмотреть здесь - https://dzone.com/articles/logstash-elasticsearch-and
-- Для добавления данных в Kibana нужно сначала создать Index Pattern, по которому будут подгружаться индексы из ES
+## Илюстрация (screenshot dashdoard)
 
-> Упражнение разработано в рамках курса [OTUS / Data Engineer](https://otus.ru/lessons/data-engineer/)
+![Dashboard Status/Time](https://github.com/mzabolotnov/pic_storage_repository/raw/main/dashboard_status_kibana.png)
